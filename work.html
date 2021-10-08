@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="//at.alicdn.com/t/font_2851689_af8lc0qf3de.css"> -->
+    <style>
+        /* 提示框 */
+        
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .one {
+            width: 200px;
+            height: 20px;
+            border: 5px solid red;
+            display: none;
+        }
+        /* 登录框 */
+        
+        .tow {
+            width: 70px;
+            height: 20px;
+            background-color: royalblue;
+            color: seashell;
+            cursor: pointer;
+        }
+        
+        .tows {
+            width: 200px;
+            height: 45px;
+            background-color: yellow;
+            position: fixed;
+            display: none;
+            left: calc(50% - 100px);
+            top: calc(50% - 100px);
+        }
+        
+        span {
+            width: 20px;
+            height: 20px;
+            font-size: 15px;
+            background-color: red;
+            right: 0;
+            position: absolute;
+        }
+        /* 密码框 */
+        
+        .password {
+            margin: -20px;
+        }
+        
+        .egg {
+            width: 20px;
+            height: 20px;
+            /* margin-top: -70px; */
+            margin-left: -30px;
+            cursor: pointer;
+            background: url(.//yincang.png) no-repeat;
+        }
+        /* 图片转换 */
+        
+        ul,
+        li,
+        ol {
+            list-style: none;
+        }
+        
+        .box {
+            width: 400px;
+            height: 300px;
+            border: 1px solid #333;
+            position: relative;
+        }
+        
+        .box ul {
+            height: 50px;
+        }
+        
+        .box ul li {
+            width: 100px;
+            height: 100%;
+            border: 1px solid pink;
+            float: left;
+            box-sizing: border-box;
+        }
+        
+        .box ul li img {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .box ul li.active {
+            border: 3px solid blue;
+        }
+        
+        .box ol li {
+            width: 100%;
+            height: 250px;
+            position: absolute;
+            left: 0;
+            top: 50px;
+            display: none;
+        }
+        
+        .box ol li img {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .box ol li.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 提示框 -->
+    <div>
+        <input type="radio">提示
+        <p class="one">提示内容...</p>
+    </div>
+    <hr>
+    <!-- 登录框 -->
+    <div class="tow">
+        <li>登录</li>
+    </div>
+    <div class="tows">
+        <span>X</span> 账号：
+        <br> 密码：
+    </div>
+    <hr>
+    <!-- 搜索框 -->
+    <input type="text" value="请输入" class="sousuo">
+    <hr>
+    <!-- 图片转换 -->
+    <hr>
+    <!-- 密码框 -->
+    <div>
+        <input type="password" class="pas">
+        <img src=".//yincang.png" alt="" class="egg">
+    </div>
+    <hr>
+    <!-- 图片转换 -->
+    <div class="box">
+        <ul>
+            <li class="active"><img src="./OIP-C (1).png" alt=""></li>
+            <li><img src="./OIP-C (2).png" alt=""></li>
+            <li><img src="./OIP-C (3).png" alt=""></li>
+            <li><img src="./OIP-C (4).png" alt=""></li>
+        </ul>
+        <ol>
+            <li class="active"><img src="./OIP-C (1).png" alt=""></li>
+            <li><img src="./OIP-C (2).png" alt=""></li>
+            <li><img src="./OIP-C (3).png" alt=""></li>
+            <li><img src="./OIP-C (4).png" alt=""></li>
+        </ol>
+    </div>
+    <script>
+        // 提示框
+        const inp = document.querySelector('input');
+        const p = document.querySelector('p');
+        inp.onmouseover = function() {
+            p.style.display = 'block';
+        }
+        inp.onmouseleave = function() {
+                p.style.display = 'none';
+            }
+            // 登录框
+        const pa = document.querySelector('.tow li');
+        const bt = document.querySelector('.tows');
+        const sp = document.querySelector('span');
+        pa.onclick = function() {
+            bt.style.display = 'block';
+        }
+        sp.onclick = function() {
+                bt.style.display = 'none'
+            }
+            // 搜索框
+        const ad = document.querySelector('.sousuo')
+        ad.onfocus = function() {
+            this.value = ''
+        }
+        ad.onblur = function() {
+                this.value = '请输入 '
+            }
+            // 图片转换
+            // 密码框
+        const pas = document.querySelector('.pas');
+        const span = document.querySelector('.egg');
+        let num = 0;
+        span.onclick = function() {
+                num++;
+                if (num % 2 != 0) {
+                    this.src = './/xianshi.png'
+                    pas.type = 'text';
+                } else {
+                    this.src = './/yincang.png'
+                    pas.type = 'password';
+                }
+            }
+            // 图片转换
+        const lis = document.querySelectorAll('.box ul li');
+        const tabs = document.querySelectorAll('.box ol li');
+        for (let i = 0; i < lis.length; i++) {
+            lis[i].onclick = function() {
+                for (let j = 0; j < lis.length; j++) {
+                    lis[j].className = '';
+                    tabs[j].className = '';
+                }
+                this.className = 'active';
+                tabs[i].className = 'active';
+            }
+
+        }
+    </script>
+</body>
+
+</html>
