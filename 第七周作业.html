@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<h3>比大小</h3>
+<input type="number" class="a" placeholder="请输入a的值">
+<input type="number" class="b" placeholder="请输入b的值">
+<button>比大小</button>
+<p></p>
+<hr>
+<h3>三个值比大小</h3>
+<input type="number" placeholder="请输入a的值" class="a1">
+<input type="number" placeholder="请输入b的值" class="b2">
+<input type="number" placeholder="请输入c的值" class="c3">
+<button class="button2">进行比较</button>
+<p class="p2"></p>
+
+<body>
+    <script>
+        const a = document.querySelector('.a');
+        const b = document.querySelector('.b');
+        const c = document.querySelector('button');
+        const p = document.querySelector('p');
+        c.onclick = function() {
+            if (!a.value || !b.value) {
+                return window.alert('请输入值')
+            }
+            if (a.value > b.value) {
+                p.innerHTML = 'a大于b'
+            } else if (b.value > a.value) {
+                p.innerHTML = 'b大于a'
+            } else {
+                p.innerHTML = 'a和b相等'
+            }
+        }
+        document.write('<hr>')
+        document.write('<h3>整除5</h3>')
+        let aa = 10;
+        if (aa % 5 == 0) {
+            document.write('可以被5整除')
+        } else {
+            document.write('不可以被5整除')
+        }
+        document.write('<hr>')
+        document.write('<h3>100内的整数</h3>')
+        for (let i = 0; i <= 100; i++) {
+            if (i % 2 == 0) {
+                document.write(i + ' ')
+            }
+        }
+        document.write('<hr>')
+        document.write('<h3>7的倍数</h3>')
+        let num = 7;
+        while (num < 100) {
+            if (num % 7 === 0) {
+                document.write(num + ' ');
+            }
+            num++;
+        }
+        document.write('<hr>')
+            // document.write('<h3>三个值比大小</h3>')
+        const a1 = document.querySelector('.a1');
+        const b2 = document.querySelector('.b2');
+        const c3 = document.querySelector('.c3');
+        const button2 = document.querySelector('.button2');
+        const p2 = document.querySelector('.p2');
+        button2.addEventListener('click', function() {
+            if (parseFloat(a1.value) > parseFloat(b2.value) && parseFloat(a1.value) > parseFloat(c3.value)) {
+                p2.innerHTML = `a的值最大`;
+            } else if (parseFloat(b2.value) > parseFloat(a1.value) && parseFloat(b2.value) > parseFloat(c3.value)) {
+                p2.innerHTML = `b的值最大`;
+            } else if (parseFloat(c3.value) > parseFloat(b2.value) && parseFloat(c3.value) > parseFloat(a1.value)) {
+                p2.innerHTML = `c的值最大`;
+            }
+        })
+        document.write('<hr>')
+        document.write('<h3>输出一百以内的偶数和奇数</h3>');
+        const p3 = document.createElement('p');
+        const p4 = document.createElement('p');
+        for (let i = 1; i < 100; i++) {
+            if (i % 2 === 0) {
+                p3.innerHTML += `${i} `
+            } else {
+                p4.innerHTML += `${i} `
+            }
+        }
+        document.body.appendChild(p3);
+        document.body.appendChild(p4);
+        document.write('<hr>')
+        document.write('<h3>编写函数实现累加</h3>')
+
+        function test(...args) {
+            let sum = 0;
+            let str = '';
+            for (let i = 0; i < args.length; i++) {
+                sum += args[i];
+                if (i === args.length - 1) {
+                    str += `${args[i]} = ${sum}`
+                } else {
+                    str += `${args[i]} + `
+                }
+            }
+            return str
+        }
+        document.write(test(1, 2, 3, 4, 5, 6, 7, 8, 9) + '<br>')
+        document.write(test(3, 6, 9, 12, 15, 18) + '<br>')
+        document.write(test(1) + '<br>')
+    </script>
+</body>
+
+</html>
